@@ -13,7 +13,7 @@ int heading_averager(){
 		while(!myfile.eof() && i<10){			//reads 10 values from the text file 
 			getline(myfile,line);
 			heading_val[i]=std::stoi(line);
-			i=i+1;
+			i+=1;
 		}
 		
 		myfile.close();
@@ -23,7 +23,7 @@ int heading_averager(){
 
 	int sum=0;
 	for(int i=0;i<10;i++){
-		sum=sum+heading_val[i];		//calculates and returns the average
+		sum+=heading_val[i];		//calculates and returns the average
 		}
 
 	return sum/10;
@@ -32,12 +32,12 @@ int main(){
 	while(1){
 		int average_heading;
 		char conf;
-		std::cout<<"Do you want the compass value?(y/n)"<<"\n";
+		std::cout<<"Do you want the compass value?(y/n)"<<endl;
 		std::cin>>conf;
 		if(conf=='y')
 		{
 			average_heading=heading_averager();
-			std::cout<<"the compass reading is"<<" "<<average_heading<<"\n";
+			std::cout<<"the compass reading is "<<average_heading<<endl;
 		}
 		
 	}
