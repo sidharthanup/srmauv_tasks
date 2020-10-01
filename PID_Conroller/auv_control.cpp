@@ -14,7 +14,7 @@ clock_t last_time;
 float integral_sum,last_error;
 float kp,kd,ki;
 
-int gettuningparams(){								//this function obtains the tuning parameters from the file tuning_parameters.txt
+void gettuningparams(){								//this function obtains the tuning parameters from the file tuning_parameters.txt
 	std::string line1,line2,line3;
 	
 	std::ifstream myfile("tuning_parameters.txt");
@@ -49,11 +49,11 @@ int analog_read_currentdepth(){ 	//this function reads the current depth
 			depth=std::stof( line );
 			}
 		myfile.close();
-		return depth;
 		}
 	else
 		std::cout<<"Unable to open file";
-	
+
+	return depth;
 }
 
 int analog_read_requireddepth(){	//this function reads the required depth
@@ -65,14 +65,15 @@ int analog_read_requireddepth(){	//this function reads the required depth
 			depth=std::stof( line );
 			}
 		myfile.close();
-		return depth;
 		}
 	else
 		std::cout<<"Unable to open file";
+
+	return depth;
 	
 }
 
-int analog_write_pwm(float pwm_out){ 	//this functions writes the pwm value to the file	
+void analog_write_pwm(float pwm_out){ 	//this functions writes the pwm value to the file
 	std::string line=std::to_string(pwm_out);
 	std::ofstream myfile("analog_output.txt");
 	if(myfile.is_open())
@@ -133,6 +134,7 @@ int main()
 		gettuningparams();
 		pid_correction(kp,ki,kd);
 	}
+	return 0;
 }
 
 	
