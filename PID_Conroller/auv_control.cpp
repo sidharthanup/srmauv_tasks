@@ -72,7 +72,7 @@ int analog_read_requireddepth(){	//this function reads the required depth
 	
 }
 
-int analog_write_pwm(float pwm_out){ 	//this functions writes the pwm value to the file	
+void analog_write_pwm(float pwm_out){ 	//this functions writes the pwm value to the file
 	std::string line=std::to_string(pwm_out);
 	std::ofstream myfile("analog_output.txt");
 	if(myfile.is_open())
@@ -133,6 +133,7 @@ int main()
 		gettuningparams();
 		pid_correction(kp,ki,kd);
 	}
+	return 0;
 }
 
 	
